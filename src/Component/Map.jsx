@@ -3,6 +3,7 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import axios from 'axios';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { FaLocationDot } from "react-icons/fa6";
+import TextField from '@mui/material/TextField';
 
 
 const containerStyle = {
@@ -22,6 +23,7 @@ const Map = ({ googleMapsApiKey }) => {
   const MAP_LIBRARIES = ['places'];
   const [userDetails,setUserDetails]=useState('')
   const handleSelect = async (address) => {
+    console.log(address,'addrress')
       axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyBiDeS5nKFEY8rHGN4-MqKBNdlMt79toFY`)
       .then(response => {
         const { lat, lng } = response.data.results[0].geometry.location;
@@ -31,7 +33,7 @@ const Map = ({ googleMapsApiKey }) => {
         setError(error.message,'did not get any data');
       });
   };
-  handleSelect('Sangola, Patur, India')
+  // handleSelect('Sangola, Patur, India')
   useEffect(() => {
     setUserDetails({
       name:localStorage.getItem('name'),
@@ -67,10 +69,13 @@ const Map = ({ googleMapsApiKey }) => {
 console.log(userDetails,'userDetails')
   return (
     <LoadScript googleMapsApiKey={googleMapsApiKey} loading="async" libraries={MAP_LIBRARIES} >
-      <PlacesAutocomplete value={selectedLocation} onChange={setSelectedLocation} >
+      <PlacesAutocomplete value={selectedLocation} onChange={setSelectedLocation} onSelect={handleSelect}>
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+         
           <div>
-            <input {...getInputProps({ placeholder: 'Enter location' })} />
+             {console.log(getInputProps,'getInputProps')}
+            {/* <input /> */}
+            <TextField id="outlined-basic" label="Enter Address" variant="outlined" size='small' defaultValue={''} {...getInputProps({ placeholder: 'Enter location' })} />
             <p className="">User Name:-{userDetails?.name}</p>
             <p className="">Email:-{userDetails?.email}</p>
             <p className=""></p>
