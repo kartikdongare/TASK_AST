@@ -1,0 +1,49 @@
+.main-login{
+    /* border: 2px solid red; */
+    /* height: 650px; */
+    margin-top: 5rem;
+    
+  }
+  .sub-login{
+    width: 90%;
+    position: relative;
+    top: 15%;
+    left: 2%;
+    display: flex;
+    /* flex-wrap: wrap;
+    justify-content: space-between; */
+
+  }
+  .login-page1{
+    width: 30%;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(225, 221, 221);
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  .seperate{
+    display: flex;
+  }
+  .sep-line{
+    border-bottom: 1px solid black;
+    width: 38%;
+  }
+  .buttons{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .login-page2{
+    background-image: url('/src/assets/cherry-667.png');
+    /* width: 60%; */
+    width: 500px;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .login-page2{
+    animation: move 2s infinite ease alternate;
+  }
